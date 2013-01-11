@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=BBQLinux Python Switcher
+GenericName=BBQLinux Python Switcher
+Comment=Switch between pythons versions
+Exec=gksudo /usr/bin/bbqlinux-python-switcher
+Icon=bbqlinux_icon_blue_48x48
+Terminal=False
+Type=Application
+Categories=System;

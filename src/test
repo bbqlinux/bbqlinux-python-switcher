@@ -1,0 +1,9 @@
+#!/bin/bash
+
+sudo rm -rf /usr/bin/bbqlinux-python-switcher
+sudo rm -rf /usr/lib/bbqlinux-python-switcher
+sudo rm -rf /usr/share/bbqlinux-python-switcher
+
+sudo cp -R usr /
+
+bbqlinux-python-switcher $1
