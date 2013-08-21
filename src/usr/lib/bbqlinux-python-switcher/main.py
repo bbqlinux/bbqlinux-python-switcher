@@ -19,7 +19,7 @@ import commands
 import os
 from PyQt4 import QtGui, QtCore, uic
 from ui.qt_interface import SwitcherWindow
-    
+
 # main entry
 if __name__ == "__main__":
     # CLI
