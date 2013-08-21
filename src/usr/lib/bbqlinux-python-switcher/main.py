@@ -17,7 +17,22 @@ import sys
 import commands
 from PyQt4 import QtGui, QtCore, uic
 from ui.qt_interface import SwitcherWindow
-	
+
+import argparse
+import os
+cliparser = argparse.ArgumentParser(description='Switch between Python2 and Python3.')
+cliparser.add_argument("-2", "--python2", help="Enables Python 2.", action="store_true")
+cliparser.add_argument("-3", "--python3", help="Enables Python 3.", action="store_true")
+cliargs = cliparser.parse_args()
+if cliargs.python2:
+    os.system("rm /usr/bin/python")
+    os.system("ln -s /usr/bin/python2 /usr/bin/python")
+    sys.exit(0)
+if cliargs.python3:
+    os.system("rm /usr/bin/python")
+    os.system("ln -s /usr/bin/python3 /usr/bin/python")
+    sys.exit(0)
+    
 # main entry
 if __name__ == "__main__":
     app = QtGui.QApplication(sys.argv)
