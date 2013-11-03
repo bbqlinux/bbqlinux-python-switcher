@@ -29,12 +29,12 @@ if __name__ == "__main__":
     
     cliargs = cliparser.parse_args()
     if cliargs.python2:
-        os.system("rm /usr/bin/python")
-        os.system("ln -s /usr/bin/python2 /usr/bin/python")
+        os.system("rm %s" % SwitcherWindow.PYTHON_SLINK)
+        os.system("ln -s %s %s" % (SwitcherWindow.PYTHON2_PATH, SwitcherWindow.PYTHON_SLINK))
         sys.exit(0)
     if cliargs.python3:
-        os.system("rm /usr/bin/python")
-        os.system("ln -s /usr/bin/python3 /usr/bin/python")
+        os.system("rm %s" % SwitcherWindow.PYTHON_SLINK)
+        os.system("ln -s %s %s" % (SwitcherWindow.PYTHON3_PATH, SwitcherWindow.PYTHON_SLINK))
         sys.exit(0)
     
     # GUI
