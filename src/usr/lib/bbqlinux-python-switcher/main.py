@@ -28,6 +28,8 @@ if __name__ == "__main__":
     cliparser.add_argument("-3", "--python3", help="Enables Python 3", action="store_true")
     
     cliargs = cliparser.parse_args()
+    if cliargs.python2 and cliargs.python3:
+        print("Error: Multiple versions specified. Please choose one version to switch to.")
     if cliargs.python2:
         os.system("rm %s" % SwitcherWindow.PYTHON_SLINK)
         os.system("ln -s %s %s" % (SwitcherWindow.PYTHON2_PATH, SwitcherWindow.PYTHON_SLINK))
