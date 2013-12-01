@@ -1,8 +1,8 @@
-# Maintainer: Daniel Hillenbrand <codeworkx@bbqlinux.org>
+# Maintainer: Daniel Hillenbrand <codeworkx [at] bbqlinux [dot] org>
 
 pkgname=bbqlinux-python-switcher
 pkgver=1.0.2
-pkgrel=1
+pkgrel=2
 pkgdesc="BBQLinux Python Switcher"
 arch=('any')
 url="https://github.com/bbqlinux/bbqlinux-python-switcher"
