@@ -32,12 +32,18 @@ if __name__ == "__main__":
         print("Error: Multiple versions specified. Please choose one version to switch to.")
         sys.exit(1)
     if cliargs.python2:
-        os.system("rm %s" % SwitcherWindow.PYTHON_SLINK)
-        os.system("ln -s %s %s" % (SwitcherWindow.PYTHON2_PATH, SwitcherWindow.PYTHON_SLINK))
+        if os.path.isfile(SwitcherWindow.PYTHON2_PATH):
+            os.system("rm %s" % SwitcherWindow.PYTHON_SLINK)
+            os.system("ln -s %s %s" % (SwitcherWindow.PYTHON2_PATH, SwitcherWindow.PYTHON_SLINK))
+        else:
+            print("Error: Python 2 not found! Please make sure it is properly installed.")
         sys.exit(0)
     if cliargs.python3:
-        os.system("rm %s" % SwitcherWindow.PYTHON_SLINK)
-        os.system("ln -s %s %s" % (SwitcherWindow.PYTHON3_PATH, SwitcherWindow.PYTHON_SLINK))
+        if os.path.isfile(SwitcherWindow.PYTHON3_PATH):
+            os.system("rm %s" % SwitcherWindow.PYTHON_SLINK)
+            os.system("ln -s %s %s" % (SwitcherWindow.PYTHON3_PATH, SwitcherWindow.PYTHON_SLINK))
+        else:
+            print("Error: Python 3 not found! Please make sure it is properly installed.")
         sys.exit(0)
     
     # GUI

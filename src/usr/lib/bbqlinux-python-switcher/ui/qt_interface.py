@@ -75,6 +75,14 @@ class SwitcherWindow(QtGui.QMainWindow):
             self.ui.button_python2.setEnabled(True)
             self.ui.button_python3.setText(unicode("Activate"))
             self.ui.button_python3.setEnabled(True)
+            
+        # Deactivates buttons for python versions not installed / missing
+        if not os.path.isfile(self.PYTHON2_PATH):
+            self.ui.button_python2.setText(unicode("Not Found"))
+            self.ui.button_python2.setEnabled(False)
+        if not os.path.isfile(self.PYTHON3_PATH):
+            self.ui.button_python3.setText(unicode("Not Found"))
+            self.ui.button_python3.setEnabled(False)
 
     def button_python2_clicked(self):
         os.system("rm %s" % self.PYTHON_SLINK)
