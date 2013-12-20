@@ -7,7 +7,7 @@ pkgdesc="BBQLinux Python Switcher"
 arch=('any')
 url="https://github.com/bbqlinux/bbqlinux-python-switcher"
 license=('GPL')
-depends=('bbqlinux-artwork' 'python2' 'qt4' 'python2-pyqt4')
+depends=('bbqlinux-artwork' 'python2' 'qt4' 'python2-pyqt4' 'gksu')
 
 package() {
   cd "$pkgdir"
