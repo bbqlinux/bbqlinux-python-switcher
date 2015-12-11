@@ -26,8 +26,12 @@ from PyQt4 import QtGui, QtCore, uic
 class SwitcherWindow(QtGui.QMainWindow):
 
     PYTHON_SLINK = "/usr/bin/python"
-    PYTHON2_PATH = "/usr/bin/python2"
-    PYTHON3_PATH = "/usr/bin/python3"
+
+    PYTHON2_EXEC = "python2"
+    PYTHON2_PATH = "/usr/bin/"
+
+    PYTHON3_EXEC = "python3"
+    PYTHON3_PATH = "/usr/bin/"
 
     def __init__(self):
         # Check if we run as root
@@ -60,12 +64,12 @@ class SwitcherWindow(QtGui.QMainWindow):
 
     def refresh_button_state(self):
         python_path = self.get_active_python(self.PYTHON_SLINK)
-        if python_path == self.PYTHON2_PATH:
+        if python_path == ("%s%s" % (self.PYTHON2_PATH, self.PYTHON2_EXEC)) or python_path == ("%s" % self.PYTHON2_EXEC):
             self.ui.button_python2.setText(unicode("Active"))
             self.ui.button_python2.setEnabled(False)
             self.ui.button_python3.setText(unicode("Activate"))
             self.ui.button_python3.setEnabled(True)
-        elif python_path == self.PYTHON3_PATH:
+        elif python_path == ("%s%s" % (self.PYTHON3_PATH, self.PYTHON3_EXEC)) or python_path == ("%s" % self.PYTHON3_EXEC):
             self.ui.button_python3.setText(unicode("Active"))
             self.ui.button_python3.setEnabled(False)
             self.ui.button_python2.setText(unicode("Activate"))
@@ -77,21 +81,21 @@ class SwitcherWindow(QtGui.QMainWindow):
             self.ui.button_python3.setEnabled(True)
             
         # Deactivates buttons for python versions not installed / missing
-        if not os.path.isfile(self.PYTHON2_PATH):
+        if not os.path.isfile(("%s%s" % (self.PYTHON2_PATH, self.PYTHON2_EXEC))):
             self.ui.button_python2.setText(unicode("Not Found"))
             self.ui.button_python2.setEnabled(False)
-        if not os.path.isfile(self.PYTHON3_PATH):
+        if not os.path.isfile(("%s%s" % (self.PYTHON3_PATH, self.PYTHON2_EXEC))):
             self.ui.button_python3.setText(unicode("Not Found"))
             self.ui.button_python3.setEnabled(False)
 
     def button_python2_clicked(self):
         os.system("rm %s" % self.PYTHON_SLINK)
-        os.system("ln -s %s %s" % (self.PYTHON2_PATH, self.PYTHON_SLINK))
+        os.system("ln -s %s%s %s" % (self.PYTHON2_PATH, self.PYTHON2_EXEC, self.PYTHON_SLINK))
         self.refresh_button_state()
 
     def button_python3_clicked(self):
         os.system("rm %s" % self.PYTHON_SLINK)
-        os.system("ln -s %s %s" % (self.PYTHON3_PATH, self.PYTHON_SLINK))
+        os.system("ln -s %s %s" % (self.PYTHON3_PATH, self.PYTHON3_EXEC, self.PYTHON_SLINK))
         self.refresh_button_state()
 
     def get_active_python(self, link):
