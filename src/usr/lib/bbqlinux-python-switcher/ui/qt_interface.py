@@ -95,7 +95,7 @@ class SwitcherWindow(QtGui.QMainWindow):
 
     def button_python3_clicked(self):
         os.system("rm %s" % self.PYTHON_SLINK)
-        os.system("ln -s %s %s" % (self.PYTHON3_PATH, self.PYTHON3_EXEC, self.PYTHON_SLINK))
+        os.system("ln -s %s%s %s" % (self.PYTHON3_PATH, self.PYTHON3_EXEC, self.PYTHON_SLINK))
         self.refresh_button_state()
 
     def get_active_python(self, link):
